@@ -31,7 +31,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script>
             $(function() {
-                $.getJSON("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", function (data) {
+                $.getJSON("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson", function (data) {
                     console.log(data);
                     //una pequeña función para convertir un dato de más abajo
                     function t(unix_timestamp) {
@@ -52,6 +52,8 @@
                             articuloTipo = '<article class="ph">';
                         } else {
                             articuloTipo = '<article class="etc">';
+                            
+                            
                         }
                         //aplicación del articuloTipo y la pequeña función
                         $("section").append(articuloTipo + "<h2>" + temblor.properties.mag.toFixed(1) + "</h2><p>" + temblor.properties.place + "</p><p><a href='" + temblor.properties.url + "' target='_blank'>" + t(temblor.properties.time) + "</a></p></article>");
